@@ -8,7 +8,7 @@ Base rules stack content for narrow screens. A `min-width: 48rem` media query in
 
 ## Open in GitHub Codespaces
 
-Create a public GitHub repository, upload this project's contents, and open the repository in Codespaces. Open `dist/index.html` with the IDE's preview feature. If you use a server, serve the `dist` directory and use the forwarded-port preview URL. Copy the actual public repository URL and working IDE preview URL into the Word template. No GitHub repository URL has been generated in this package.
+Create a public GitHub repository, upload this project's contents, and open the repository in Codespaces. Open `index.html` with the IDE's preview feature. If you use a server, serve the `dist` directory and use the forwarded-port preview URL. Copy the actual public repository URL and working IDE preview URL into the Word template. No GitHub repository URL has been generated in this package.
 
 The form demonstrates native HTML validation. It has no order-processing backend, accepts no payments, and sends no bakery request.
 
