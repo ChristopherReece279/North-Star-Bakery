@@ -6,6 +6,7 @@
   <meta name="description" content="Bakery hours, location, and inquiry or preorder request form.">
   <title>Contact | North Star Bakery</title>
 <link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
 </head>
 <body class="contact-page">
   <!-- Business details are sample content for the client scenario. -->
@@ -45,57 +46,64 @@
     </section>
     <section aria-labelledby="request-heading" class="content-section request-section">
       <h2 id="request-heading">Inquiry and preorder request</h2>
-      <p id="form-help">Fields marked required must be completed. For a
-         general question, enter your preferred visit date as the pickup date.</p>
-      <p id="form-status">This demonstration form checks your entries in
-         the browser. It does not send a request or reserve any items.</p>
+      <p id="form-help">Fields marked required must be completed. A pickup date is required for preorder requests; it is optional for general questions and event inquiries.</p>
+      <p id="form-status">This demonstration checks your entries and displays a local result. It does not send a request, take payment, or reserve any items.</p>
       <form id="request-form" action="contact.html#request-form" method="get" aria-describedby="form-help form-status">
-        <fieldset>
+        <div class="shortlist-prefill" hidden data-js-tools>
+<h3>Start with your saved products</h3>
+   <p id="saved-items-description">Save products on the Products page, then add them to your item details here.</p>
+   <button type="button" id="use-favorites" aria-describedby="saved-items-description">Add saved favorites to details</button>
+   <p id="prefill-status" role="status" aria-live="polite"></p>
+</div>
+<div id="validation-summary" class="validation-summary" role="alert" hidden></div>
+<fieldset>
           <legend>Your contact information</legend>
           <div class="form-fields">
 <p>
-            <label for="customer-name">Full name (required)</label><br>
-            <input type="text" id="customer-name" name="customer_name" autocomplete="name" maxlength="100" required>
-          </p>
+            <label for="customer-name">Full name (required, at least 2 characters)</label><br>
+            <input type="text" id="customer-name" name="customer_name" autocomplete="name" maxlength="100" required aria-describedby="name-error" minlength="2">
+          <span id="name-error" class="field-error"></span></p>
           <p>
             <label for="email">Email address (required)</label><br>
-            <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required>
-          </p>
+            <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required aria-describedby="email-error">
+          <span id="email-error" class="field-error"></span></p>
         </div>
 </fieldset>
         <fieldset>
           <legend>Your request details</legend>
           <div class="form-fields">
 <p>
-            <label for="pickup-date">Pickup or visit date (required)</label><br>
-            <input type="date" id="pickup-date" name="pickup_date" required>
-          </p>
+            <label for="pickup-date">Preferred pickup date (required for preorders)</label><br>
+            <input type="date" id="pickup-date" name="pickup_date" aria-describedby="date-error">
+          <span id="date-error" class="field-error"></span></p>
           <p>
             <label for="request-type">Request type (required)</label><br>
-            <select id="request-type" name="request_type" required>
+            <select id="request-type" name="request_type" required aria-describedby="type-error">
               <option value="">Choose a request type</option>
               <option value="preorder">Preorder request</option>
               <option value="question">General question</option>
               <option value="event">Cake or event inquiry</option>
             </select>
-          </p>
+          <span id="type-error" class="field-error"></span></p>
           <p class="full-field">
             <label for="item-details">Item details or question (required)</label><br>
-            <textarea id="item-details" name="item_details" rows="5" cols="40" minlength="10" maxlength="1500" required aria-describedby="item-help"></textarea>
-          </p>
+            <textarea id="item-details" name="item_details" rows="5" cols="40" minlength="10" maxlength="1500" required aria-describedby="item-help details-error"></textarea>
+          <span id="details-error" class="field-error"></span></p>
           <p id="item-help" class="full-field">Use 10 to 1500 characters. For preorders, include
              the item name, quantity, and preferred pickup time.</p>
           <p class="full-field">
             <label for="allergy-notes">Allergy notes (optional)</label><br>
-            <textarea id="allergy-notes" name="allergy_notes" rows="3" cols="40" maxlength="500" aria-describedby="allergy-help"></textarea>
-          </p>
+            <textarea id="allergy-notes" name="allergy_notes" rows="3" cols="40" maxlength="500" aria-describedby="allergy-help allergy-error"></textarea>
+          <span id="allergy-error" class="field-error"></span></p>
           <p id="allergy-help" class="full-field">Tell us about relevant allergies. Our kitchen
              handles wheat, milk, eggs, nuts, and other allergens; we cannot
              guarantee that any item is free of cross-contact.</p>
         </div>
 </fieldset>
-        <p><button type="submit">Check request fields</button></p>
-      </form>
+        <p><button type="submit">Review request</button></p>
+      <p id="form-result" class="form-result" role="status" tabindex="-1" hidden></p>
+<p id="storage-message" role="status" class="storage-message"></p>
+</form>
       <p>A preorder would need confirmation from the bakery before payment
          and pickup arrangements. No online checkout is included.</p>
     </section>
@@ -104,6 +112,7 @@
     <div class="container footer-inner">
 <p>© 2026 North Star Bakery. Baked for our neighborhood.</p>
     <p><a href="contact.html">Contact us about a pickup request</a></p>
-  </div></footer>
+  <p><a href="products.html#favorites-panel">Saved favorites (<span data-favorite-count>0</span>)</a></p>
+</div></footer>
 </body>
 </html>

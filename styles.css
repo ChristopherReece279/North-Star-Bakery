@@ -308,3 +308,32 @@ footer a { color: var(--cream); }
   .story-layout, .contact-layout, .staff-list { gap: var(--space-5); }
   .page-intro { padding-block: 4rem; }
 }
+
+/* Touchstone 4 uses the same four colors and two font families. */
+[hidden] { display: none !important; }
+.shop-tools { display: flex; flex-direction: column; gap: var(--space-4); padding-bottom: var(--space-4); margin-bottom: var(--space-3); border-bottom: 1px solid var(--peach); }
+.filter-panel, .favorites-panel { min-width: 0; }
+.filter-buttons { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+.filter-buttons button { background: var(--cream); color: var(--brown); padding: 0.55rem 0.8rem; font-size: 0.9rem; }
+.filter-buttons button[aria-pressed="true"] { background: var(--brown); color: var(--cream); }
+.filter-buttons button:hover { background: var(--peach); color: var(--charcoal); }
+.favorites-panel { border: 1px solid var(--brown); padding: var(--space-3); }
+#favorites-list { list-style: none; padding: 0; }
+#favorites-list > li, section[data-product-category] > ul > li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-1); }
+.product-description { flex: 1 1 13rem; }
+.save-product, .remove-favorite { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+.save-product[aria-pressed="true"] { background: var(--peach); color: var(--charcoal); }
+#filter-result, #favorites-status, #prefill-status, .storage-message { font-size: 0.9rem; }
+.storage-message { flex-basis: 100%; margin: 0; }
+.storage-message:empty, #favorites-status:empty, #prefill-status:empty { display: none; }
+.shortlist-prefill { border: 1px solid var(--peach); padding: var(--space-3); margin-bottom: var(--space-3); }
+.shortlist-prefill p { font-size: 0.9rem; }
+.field-error { display: block; margin-top: var(--space-1); color: var(--brown); font-size: 0.9rem; font-weight: 700; }
+.field-error:empty { display: none; }
+[aria-invalid="true"] { border: 3px solid var(--brown); }
+.validation-summary, .form-result { border-left: 4px solid var(--brown); padding: var(--space-2); margin-block: var(--space-3); font-weight: 700; }
+@media (min-width: 48rem) {
+ .shop-tools { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+ .filter-panel { flex: 1.1 1 0; }
+ .favorites-panel { flex: 1 1 0; }
+}

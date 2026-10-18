@@ -6,6 +6,7 @@
   <meta name="description" content="Browse our breads, pastries, and cakes with sample price ranges.">
   <title>Products | North Star Bakery</title>
 <link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
 </head>
 <body class="products-page">
   <!-- Business details are sample content for the client scenario. -->
@@ -28,15 +29,42 @@
     <p>Find something for a quick breakfast, a family meal, or a special
        celebration. Prices are in U.S. dollars and vary by size and selection.</p>
     </div>
-<div class="products-layout">
-<section aria-labelledby="breads" class="content-section">
+<section class="shop-tools" aria-label="Product tools">
+   <div class="filter-panel">
+<h2>Find your next favorite</h2>
+   <p>Choose a category, then save products you would like to ask about.</p>
+   <div class="filter-buttons" role="group" aria-label="Filter bakery products" hidden data-js-tools>
+    <button type="button" data-category="all" aria-pressed="true">All products</button>
+    <button type="button" data-category="breads" aria-pressed="false">Breads</button>
+    <button type="button" data-category="pastries" aria-pressed="false">Pastries</button>
+    <button type="button" data-category="cakes" aria-pressed="false">Cakes</button>
+   </div>
+<p id="filter-result" role="status" aria-live="polite"></p>
+</div>
+   <div id="favorites-panel" class="favorites-panel" aria-labelledby="favorites-heading">
+    <h2 id="favorites-heading">Your bakery shortlist</h2>
+    <p id="favorites-empty">Save a product below to build a shortlist.</p>
+    <ul id="favorites-list" aria-label="Saved products"></ul>
+    <p id="favorites-status" role="status" aria-live="polite"></p>
+    <button type="button" id="clear-favorites" hidden>Clear favorites</button>
+    <p><a href="contact.html#request-form">Use your shortlist in an inquiry</a></p>
+   </div>
+<noscript><p>Enable JavaScript to filter categories and save favorites. All products remain available below.</p></noscript>
+  <p id="storage-message" role="status" class="storage-message"></p></section><div class="products-layout">
+<section aria-labelledby="breads" class="content-section" data-product-category="breads">
       <h2 id="breads">Breads</h2>
       <p>Bring home a loaf for toast, sandwiches, or sharing at the table.</p>
       <img src="media/bakery-bread.png" width="320" alt="Round and oval crusty bread loaves on a bakery shelf">
       <ul>
-        <li>Country sourdough: a crisp crust and a tangy crumb; $7 to $10.</li>
-        <li>Seeded sandwich loaf: sliced for lunches and toast; $6 to $9.</li>
-        <li>Daily rolls: a simple addition to family meals; $1 to $3 each.</li>
+        <li>
+<span class="product-description">Country sourdough: a crisp crust and a tangy crumb; $7 to $10.</span><button type="button" data-save-product="signature-loaf" aria-pressed="false" aria-label="Save Country sourdough Signature Loaf" class="save-product" hidden="">Save</button>
+</li>
+        <li>
+<span class="product-description">Seeded sandwich loaf: sliced for lunches and toast; $6 to $9.</span><button type="button" data-save-product="sandwich-loaf" aria-pressed="false" aria-label="Save Seeded sandwich loaf" class="save-product" hidden="">Save</button>
+</li>
+        <li>
+<span class="product-description">Daily rolls: a simple addition to family meals; $1 to $3 each.</span><button type="button" data-save-product="daily-rolls" aria-pressed="false" aria-label="Save Daily rolls" class="save-product" hidden="">Save</button>
+</li>
       </ul>
       <h3>Our Signature Loaf</h3>
       <figure>
@@ -46,21 +74,31 @@
       </figure>
     </section>
     <div class="product-categories">
-<section aria-labelledby="pastries" class="content-section">
+<section aria-labelledby="pastries" class="content-section" data-product-category="pastries">
       <h2 id="pastries">Pastries and cookies</h2>
       <p>Pick up a treat for your commute or a selection for the office.</p>
       <ul>
-        <li>Butter croissant: flaky layers baked until golden; $3 to $5.</li>
-        <li>Seasonal fruit pastry: a fruit-filled morning treat; $4 to $6.</li>
-        <li>Cookies: rotating flavors for sharing; $2 to $3 each.</li>
+        <li>
+<span class="product-description">Butter croissant: flaky layers baked until golden; $3 to $5.</span><button type="button" data-save-product="croissant" aria-pressed="false" aria-label="Save Butter croissant" class="save-product" hidden="">Save</button>
+</li>
+        <li>
+<span class="product-description">Seasonal fruit pastry: a fruit-filled morning treat; $4 to $6.</span><button type="button" data-save-product="fruit-pastry" aria-pressed="false" aria-label="Save Seasonal fruit pastry" class="save-product" hidden="">Save</button>
+</li>
+        <li>
+<span class="product-description">Cookies: rotating flavors for sharing; $2 to $3 each.</span><button type="button" data-save-product="cookies" aria-pressed="false" aria-label="Save Cookies" class="save-product" hidden="">Save</button>
+</li>
       </ul>
     </section>
-    <section aria-labelledby="cakes" class="content-section">
+    <section aria-labelledby="cakes" class="content-section" data-product-category="cakes">
       <h2 id="cakes">Celebration cakes</h2>
       <p>Tell us about your birthday, family gathering, or community event.</p>
       <ul>
-        <li>Small celebration cake: simple decoration; $28 to $45.</li>
-        <li>Custom event cake: size and decoration by request; $45 to $90.</li>
+        <li>
+<span class="product-description">Small celebration cake: simple decoration; $28 to $45.</span><button type="button" data-save-product="small-cake" aria-pressed="false" aria-label="Save Small celebration cake" class="save-product" hidden="">Save</button>
+</li>
+        <li>
+<span class="product-description">Custom event cake: size and decoration by request; $45 to $90.</span><button type="button" data-save-product="event-cake" aria-pressed="false" aria-label="Save Custom event cake" class="save-product" hidden="">Save</button>
+</li>
       </ul>
       <p>Send the serving count, flavor preference, and requested pickup date
          so we can discuss options and provide a final quote.</p>
@@ -81,6 +119,7 @@
     <div class="container footer-inner">
 <p>© 2026 North Star Bakery. Baked for our neighborhood.</p>
     <p><a href="contact.html">Contact us about a pickup request</a></p>
-  </div></footer>
+  <p><a href="products.html#favorites-panel">Saved favorites (<span data-favorite-count>0</span>)</a></p>
+</div></footer>
 </body>
 </html>

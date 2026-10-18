@@ -1,17 +1,31 @@
-# North Star Bakery Touchstone 3
+# North Star Bakery Touchstone 4
 
-This is the same four-page North Star Bakery website created for Touchstone Task 2, with a shared external stylesheet and small markup additions for Flexbox grouping. The original page content, media, navigation paths, and form fields remain present.
+This continues the same four-page bakery website from Touchstones 2 and 3. The HTML pages, stylesheet, JavaScript modules, and media folder are at the repository root.
 
-The `dist` directory contains the four HTML files, `styles.css`, and all supplied media. There is no JavaScript or build dependency. The four CSS colors are cream `#FFF8F0`, brown `#6B3E26`, peach `#D88C5A`, and charcoal `#2F2A26`. The two font families are Georgia and Arial, with generic browser fallbacks.
+## Live website
 
-Base rules stack content for narrow screens. A `min-width: 48rem` media query introduces Flexbox columns, and `min-width: 68rem` increases spacing. Controls remain at least 44 CSS pixels tall. The picture element continues to select a wide featured image at 700px and above.
+https://christopherreece279.github.io/North-Star-Bakery/
 
-## Open in GitHub Codespaces
+## Features
 
-Create a public GitHub repository, upload this project's contents, and open the repository in Codespaces. Open `index.html` with the IDE's preview feature. If you use a server, serve the `dist` directory and use the forwarded-port preview URL. Copy the actual public repository URL and working IDE preview URL into the Word template. No GitHub repository URL has been generated in this package.
+- Filter products by All products, Breads, Pastries, or Cakes.
+- Save, remove, or clear a product shortlist.
+- Remember favorites and the selected category using localStorage.
+- Add saved products to the Contact form without replacing existing writing.
+- Validate required fields, email, lengths, and pickup dates with nearby messages.
 
-The form demonstrates native HTML validation. It has no order-processing backend, accepts no payments, and sends no bakery request.
+The form is a classroom demonstration. It validates locally and sends no order, payment, or personal details to a bakery. Only product IDs and the selected category are stored.
 
-## Review before submission
+## Files
 
-Check all four pages at approximately 375px, 768px, and 1440px. Confirm readable text, keyboard focus, navigation, responsive images, media playback, form labels, and native validation. A real browser screenshot is required in the submission document. Source checks and contrast calculations do not replace browser testing.
+`data.mjs` defines products and field configuration. `logic.mjs` holds pure data and validation functions. `app.js` connects these functions to DOM events and browser storage. `styles.css` retains the four-color, two-font, mobile-first Flexbox design.
+
+## Codespaces preview
+
+Open the repository in Codespaces and serve the repository root, for example with `python3 -m http.server 8000`. Open port 8000 from the Ports panel and use its forwarded URL as the IDE preview. JavaScript modules require an HTTP preview, not a file URL. Keep the Codespace running while its preview is in use.
+
+## Tests
+
+Run `node test_touchstone4.mjs` to check storage normalization, save/restore logic, favorites, prefill, and validation rules. Browser interaction and actual storage must also be checked on the live website.
+
+Business details and prices are sample content for the North Star Bakery course scenario.
